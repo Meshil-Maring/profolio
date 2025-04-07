@@ -136,21 +136,21 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(
         (skill) =>
           `<div class="skill-item">
-                <i class="fab ${skill.icon}"></i>
-                ${skill.name}
-            </div>`
+                  <i class="fab ${skill.icon}"></i>
+                  ${skill.name}
+              </div>`
       )
       .join("");
 
     skillCategory.innerHTML = `
-            <h3>
-                <i class="fas ${category.icon}"></i>
-                ${category.title}
-            </h3>
-            <div class="skill-items">
-                ${skillsList}
-            </div>
-        `;
+              <h3>
+                  <i class="fas ${category.icon}"></i>
+                  ${category.title}
+              </h3>
+              <div class="skill-items">
+                  ${skillsList}
+              </div>
+          `;
 
     skillsContainer.appendChild(skillCategory);
   });
@@ -257,3 +257,86 @@ document.addEventListener("DOMContentLoaded", () => {
   createScrollIndicator();
   // Your other initialization code...
 });
+
+function createParticles() {
+  const container = document.querySelector(".particles");
+  if (!container) return;
+
+  // Clear existing particles
+  container.innerHTML = "";
+
+  const particleCount = Math.floor(window.innerWidth / 20);
+  const colors = [
+    "rgba(124, 58, 237, 0.7)", // Primary accent
+    "rgba(100, 255, 218, 0.5)", // Teal
+    "rgba(224, 231, 255, 0.4)", // Light
+  ];
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+
+    // Random properties with constrained ranges
+    const size = Math.random() * 4 + 1;
+    const posX = Math.random() * window.innerWidth;
+    const posY = Math.random() * window.innerHeight;
+    const duration = Math.random() * 30 + 20; // 20-50s
+    const delay = Math.random() * -20;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const opacity = Math.random() * 0.5 + 0.1;
+
+    // Apply styles
+    Object.assign(particle.style, {
+      width: `${size}px`,
+      height: `${size}px`,
+      left: `${posX}px`,
+      top: `${posY}px`,
+      backgroundColor: color,
+      opacity: opacity,
+      animationDuration: `${duration}s`,
+      animationDelay: `${delay}s`,
+      animationName: "float",
+    });
+
+    // Create unique movement path for each particle
+    const keyframes = `
+              @keyframes particle-move-${i} {
+                  0%, 100% {
+                      transform: translate(-50%, -50%) translate(0, 0);
+                  }
+                  25% {
+                      transform: translate(-50%, -50%) translate(${
+                        Math.random() * 20 - 10
+                      }px, ${Math.random() * 20 - 10}px);
+                  }
+                  50% {
+                      transform: translate(-50%, -50%) translate(${
+                        Math.random() * 40 - 20
+                      }px, ${Math.random() * 10 - 5}px);
+                  }
+                  75% {
+                      transform: translate(-50%, -50%) translate(${
+                        Math.random() * 20 - 10
+                      }px, ${Math.random() * 20 - 10}px);
+                  }
+              }
+          `;
+
+    const style = document.createElement("style");
+    style.innerHTML = keyframes;
+    document.head.appendChild(style);
+
+    particle.style.animationName = `particle-move-${i}`;
+    container.appendChild(particle);
+  }
+
+  // Handle resize
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(createParticles, 200);
+  });
+}
+
+// Initialize when DOM loads
+document.addEventListener("DOMContentLoaded", createParticles);
