@@ -93,11 +93,12 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Frontend Development",
       icon: "fa-code",
       skills: [
-        { name: "React", icon: "fa-react" },
-        { name: "TypeScript", icon: "fa-js" },
-        { name: "Next.js", icon: "fa-js" },
+        { name: "HTML", icon: "fa-html5" },
+        { name: "CSS", icon: "fa-css3" },
+        { name: "JavaScript", icon: "fa-js" },
+        { name: "RectJs", icon: "fa-react" },
         { name: "Tailwind CSS", icon: "fa-css3" },
-        { name: "GraphQL", icon: "fa-code" },
+        { name: "NextJs", icon: "fa-react" },
       ],
     },
 
@@ -107,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       skills: [
         { name: "Figma", icon: "fa-figma" },
         { name: "Adobe XD", icon: "fa-adobe" },
-        { name: "User Research", icon: "fa-search" },
         { name: "Prototyping", icon: "fa-mobile" },
         { name: "Motion Design", icon: "fa-film" },
       ],
