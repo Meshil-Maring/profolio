@@ -538,7 +538,24 @@ body {
   padding: 10px;
   color: var(--light-slate);
   transition: var(--transition);
-  animation: float 6s ease-in-out infinite;
+  animation: social-float 6s ease infinite;
+}
+
+@keyframes social-float {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(2px, 4px);
+  }
+
+  80% {
+    transform: translate(-2px, -4px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
 }
 
 .social-icon:hover {

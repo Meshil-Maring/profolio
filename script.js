@@ -19,10 +19,10 @@ function createParticles() {
     const particle = document.createElement("div");
     particle.classList.add("particle");
 
-    const size = Math.random() * 4 + 1;
+    const size = Math.random() * 5 + 1;
     const posX = Math.random() * window.innerWidth;
     const posY = Math.random() * window.innerHeight;
-    const duration = Math.random() * 30 + 20;
+    const duration = Math.random() * 50 + 20;
     const delay = Math.random() * -20;
     const color = colors[Math.floor(Math.random() * colors.length)];
     const opacity = Math.random() * 0.5 + 0.1;
@@ -42,14 +42,14 @@ function createParticles() {
       @keyframes particle-move-${i} {
         0%, 100% { transform: translate(-50%, -50%) translate(0, 0); }
         25% { transform: translate(-50%, -50%) translate(${
-          Math.random() * 20 - 10
-        }px, ${Math.random() * 20 - 10}px); }
+          Math.random() * 100 - 10
+        }px, ${Math.random() * 100 - 10}px); }
         50% { transform: translate(-50%, -50%) translate(${
-          Math.random() * 40 - 20
-        }px, ${Math.random() * 10 - 5}px); }
+          Math.random() * 100 - 20
+        }px, ${Math.random() * 100 - 5}px); }
         75% { transform: translate(-50%, -50%) translate(${
-          Math.random() * 20 - 10
-        }px, ${Math.random() * 20 - 10}px); }
+          Math.random() * 100 - 10
+        }px, ${Math.random() * 100 - 10}px); }
       }
     `;
     const style = document.createElement("style");
@@ -144,7 +144,6 @@ function renderSkills() {
       skills: [
         { name: "Figma", icon: "fa-figma" },
         { name: "Adobe XD", icon: "fa-adobe" },
-        { name: "Prototyping", icon: "fa-mobile" },
         { name: "Motion Design", icon: "fa-film" },
       ],
     },
